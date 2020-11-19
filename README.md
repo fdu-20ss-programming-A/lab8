@@ -423,38 +423,25 @@ D:\CLionProjects\testC\main.c:6:5: error: expected ';' before 'return'
 - 使用IDE的debug功能，观察每一行代码运行后变量的变化是否合乎期望
 
 ```c
-#include <stdio.h>
-#include <math.h>
-int main(){
-	int age,age3,age4,i,j;
-	int a[9];
-	bool flag;
-	for(age=10;age<=22;++age){
-		flag=true;
-		age3=pow(age,3);
-		age4=pow(age,4);
-		if (age4<=999999||age4>=100000){
-			for(i=0;i<=3;++i){
-				a[i]=age3%10;
-				age3=age3/10;
-			}
-			for(i=4;i<=9;++i){
-				a[i]=age4%10;
-				age4=age4/10;
-			}
-			for(i=0;i<=8;++i){
-				for(j=i+1;j<=9;++j){
-					if (a[i]==a[j]) 
-                        flag=false;
-				}
-			}
-		}
-		else 
-            flag=false;
-		if (flag) 
-            printf("age=%d\n",age);
-	}
-	return 0;
+#include<stdio.h>
+#define N 10
+int main()
+{
+    int a[N]={0,1,2,3,4,5,6,7,8,9};
+    int i,t;
+    printf("原始数组是:\n");
+    for(i=0;i<N;i++)
+        printf("%d ",a[i]);
+    for(i=0;i<N/2;i++)
+    {
+        t=a[i];
+        a[i]=a[N-1-i];
+        a[N-1-i]=t;
+    }
+    printf("\n排序后的数组:\n");
+    for(i=0;i<N;i++)
+        printf("%d ",a[i]);
+    printf("\n");
+    return 0;
 }
-
 ```
